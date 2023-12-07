@@ -278,6 +278,18 @@ func main() {
 				Required: false,
 				Sources:  cli.EnvVars("NEXAPI_SMTP_FROM"),
 			},
+			&cli.StringFlag{
+				Name:     "ca-cert",
+				Usage:    "Certificate authority cert",
+				Required: false,
+				Sources:  cli.EnvVars("NEXAPI_CA_CERT"),
+			},
+			&cli.StringFlag{
+				Name:     "ca-key",
+				Usage:    "Certificate authority key",
+				Required: false,
+				Sources:  cli.EnvVars("NEXAPI_CA_KEY"),
+			},
 		},
 
 		Action: func(ctx context.Context, command *cli.Command) error {
@@ -316,7 +328,16 @@ func main() {
 					session.SetStore(sessionStore),
 				)
 
-				api, err := handlers.NewAPI(ctx, logger.Sugar(), db, ipam, fflags, store, signalBus, redisClient, sessionManager)
+				caKeyPair := handlers.CertificateKeyPair{}
+				if command.String("ca-cert") != "" && command.String("ca-key") != "" {
+					var err error
+					caKeyPair, err = handlers.ParseCertificateKeyPair([]byte(command.String("ca-cert")), []byte(command.String("ca-key")))
+					if err != nil {
+						log.Fatal("invalid --ca-cert or --ca-key values:", err)
+					}
+				}
+
+				api, err := handlers.NewAPI(ctx, logger.Sugar(), db, ipam, fflags, store, signalBus, redisClient, sessionManager, caKeyPair)
 				if err != nil {
 					log.Fatal(err)
 				}

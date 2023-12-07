@@ -55,6 +55,7 @@ type API struct {
 	Certificates   []*x509.Certificate
 	SmtpServer     email.SmtpServer
 	SmtpFrom       string
+	caKeyPair      CertificateKeyPair
 }
 
 func NewAPI(
@@ -67,7 +68,14 @@ func NewAPI(
 	signalBus signalbus.SignalBus,
 	redis *redis.Client,
 	sessionManager *session.Manager,
+	caKeyPair CertificateKeyPair,
 ) (*API, error) {
+
+	fflags.RegisterEnvFlag("multi-organization", "NEXAPI_FFLAG_MULTI_ORGANIZATION", true)
+	fflags.RegisterEnvFlag("security-groups", "NEXAPI_FFLAG_SECURITY_GROUPS", true)
+	fflags.RegisterFlag("ca-api", func() bool {
+		return caKeyPair.Certificate != nil
+	})
 
 	ctx, span := tracer.Start(parent, "NewAPI")
 	defer span.End()
@@ -101,6 +109,7 @@ func NewAPI(
 		sessionManager: sessionManager,
 		fetchManager:   fetchManager,
 		onlineTracker:  onlineTracker,
+		caKeyPair:      caKeyPair,
 	}
 
 	if err := api.populateStore(ctx); err != nil {

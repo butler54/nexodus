@@ -12,6 +12,7 @@ package public
 
 // ModelsVPC struct for ModelsVPC
 type ModelsVPC struct {
+	CaCertificate  string `json:"ca_certificate,omitempty"`
 	Description    string `json:"description,omitempty"`
 	Id             string `json:"id,omitempty"`
 	Ipv4Cidr       string `json:"ipv4_cidr,omitempty"`

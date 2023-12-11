@@ -8,10 +8,10 @@ resources:
   - auth-sealed-secret.yaml
 images:
   - name: quay.io/nexodus/apiserver
-    newTag: 1c5b0774d96d2b7b9174755ae4958b7c46ffc0d9
+    newTag: d8a7ad5e21abac17cf5dbc471f92fecfb4d535b7
   - name: quay.io/nexodus/envsubst
-    newTag: 1c5b0774d96d2b7b9174755ae4958b7c46ffc0d9
+    newTag: d8a7ad5e21abac17cf5dbc471f92fecfb4d535b7
   - name: quay.io/nexodus/frontend
-    newTag: 1c5b0774d96d2b7b9174755ae4958b7c46ffc0d9
+    newTag: d8a7ad5e21abac17cf5dbc471f92fecfb4d535b7
   - name: quay.io/nexodus/go-ipam
-    newTag: 1c5b0774d96d2b7b9174755ae4958b7c46ffc0d9
+    newTag: d8a7ad5e21abac17cf5dbc471f92fecfb4d535b7

@@ -316,6 +316,7 @@ $ ip address show wg0
 
 Removing the Nexodus manifest will remove the Nexodus pod and clean up WireGuard configuration from the node as well.
 
+
 ```sh
 kubectl delete -k ./deploy/nexodus-client/overlays/dev
 ```

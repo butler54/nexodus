@@ -6,9 +6,9 @@ Contributions to this repository are accepted via GitHub Pull Requests.
 
 ### DCO and Signed-off-by
 
-When contributing changes to this project, you must agree to the [DCO](DCO).
+When contributing changes to this project, you must agree to the [DCO](https://github.com/nexodus-io/nexodus/blob/main/DCO).
 Commits must include a `Signed-off-by:` header which certifies agreement with
-the terms of the [DCO](DCO).
+the terms of the [DCO](https://github.com/nexodus-io/nexodus/blob/main/DCO).
 
 Using `-s` with `git commit` will automatically add this header.
 

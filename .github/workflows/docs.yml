@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: actions/python@v5
+    - uses: actions/python@v5
       with:
         python-version: '3.8' # match netlify verison
     - name: Install docs dependencies
@@ -54,7 +54,7 @@ jobs:
 
 
   docs-workflow-complete:
-    needs: ["markdown-lint", "png-lint"]
+    needs: ["markdown-lint", "png-lint", "site-validate"]
     runs-on: ubuntu-latest
     steps:
     - name: Docs Workflow Complete

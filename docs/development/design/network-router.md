@@ -20,7 +20,7 @@ With SNAT disabled, a user can initiate traffic from external, non-nexd devices 
 This is a zero touch provisioning for the non-nexodus device since the edge nexd device will be source natting the traffic.
 
 ```shell
-nexd --username admin --password floofykittens --service-url https://try.nexodus.127.0.0.1.nip.io \
+nexd --username admin --password floofykittens --service-url https://try.nexodus.io \
     router --advertise-cidr 192.168.100.0/24 --network-router  
 ```
 

@@ -8,34 +8,34 @@ theme:
   logo: assets/logo.png
   favicon: assets/favicon.ico
   features:
-    # Provide a link to a github edit page for each doc
-    - content.action.edit
-    # Provide a link to a github view page for each doc
-    - content.action.view
-    # Load the docs as a one-page app for instant loading a linnk
-    - navigation.instant
-    # Anchor tracking, auto update URL for currently viewed section
-    - navigation.tracking
-    # Put top level sections as tabs
-    - navigation.tabs
-    # Auto expand subsections of docs in the navigation tree
-    - navigation.expand
-    # Add a link back to the top
-    - navigation.top
-    # Adjust the ToC view to follow where you are in the doc
-    - toc.follow
-    # Auto complete search suggestions
-    - search.suggest
-    # Highlight search results
-    - search.highlight
-    # Add a share link for sharing a search + results
-    - search.share
-  palette: 
+  # Provide a link to a github edit page for each doc
+  - content.action.edit
+  # Provide a link to a github view page for each doc
+  - content.action.view
+  # Load the docs as a one-page app for instant loading a linnk
+  - navigation.instant
+  # Anchor tracking, auto update URL for currently viewed section
+  - navigation.tracking
+  # Put top level sections as tabs
+  - navigation.tabs
+  # Auto expand subsections of docs in the navigation tree
+  - navigation.expand
+  # Add a link back to the top
+  - navigation.top
+  # Adjust the ToC view to follow where you are in the doc
+  - toc.follow
+  # Auto complete search suggestions
+  - search.suggest
+  # Highlight search results
+  - search.highlight
+  # Add a share link for sharing a search + results
+  - search.share
+  palette:
   # Palette toggle for light mode
   - media: "(prefers-color-scheme: light)"
     scheme: default
     toggle:
-      icon: material/brightness-7 
+      icon: material/brightness-7
       name: Switch to dark mode
   # Palette toggle for dark mode
   - media: "(prefers-color-scheme: dark)"
@@ -43,16 +43,22 @@ theme:
     toggle:
       icon: material/brightness-4
       name: Switch to light mode
+  plugins:
+  - htmlproofer:
+    raise_error: True
+    use_directory_urls: False
+    validate_external_urls: False
+
 markdown_extensions:
-  - footnotes
-  # Enable mermaid diagrams.
-  # https://squidfunk.github.io/mkdocs-material/reference/diagrams/
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
-  # The next 3 options enable admonitions (notes, warnings, etc.)
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
+- footnotes
+# Enable mermaid diagrams.
+# https://squidfunk.github.io/mkdocs-material/reference/diagrams/
+- pymdownx.superfences:
+    custom_fences:
+    - name: mermaid
+      class: mermaid
+      format: !!python/name:pymdownx.superfences.fence_code_format
+# The next 3 options enable admonitions (notes, warnings, etc.)
+- admonition
+- pymdownx.details
+- pymdownx.superfences
